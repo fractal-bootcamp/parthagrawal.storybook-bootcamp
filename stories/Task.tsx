@@ -14,9 +14,11 @@ export const Task = ({
     completeStatus,
     title,
     description,
-    taskColor,
-    checkboxColor
+
 }: TaskProps) => {
+
+    const taskColor = completeStatus ? "lightgreen" : "white"
+    const checkboxColor = completeStatus ? "green" : "white"
 
     return (
         // container
