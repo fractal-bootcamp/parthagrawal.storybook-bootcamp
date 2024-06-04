@@ -3,23 +3,28 @@
 // data, passed as props, of type TaskProps.
 
 import { useState } from "react"
+import { whenChildCheckboxClicked } from "./TaskList"
 
 export type TaskProps = {
+    completeState: boolean
     title: string
     description: string
+    whenChildCheckboxClicked: () => void
 }
 
 
 export const Task = ({
+    completeState,
     title,
     description,
+    whenChildCheckboxClicked
 
 }: TaskProps) => {
 
-    const [stateComplete, clickChange] = useState(false);
+    // const [stateComplete, clickChange] = useState(false);
 
-    const taskColor = stateComplete ? "lightgreen" : "white"
-    const checkboxColor = stateComplete ? "green" : "white"
+    const taskColor = completeState ? "lightgreen" : "white"
+    const checkboxColor = completeState ? "green" : "white"
 
     return (
         // container
@@ -42,7 +47,7 @@ export const Task = ({
 
                 {/* checkbox */}
                 <div
-                    onClick={() => (clickChange(!stateComplete))}
+                    onClick={() => whenChildCheckboxClicked()}
                     className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
                     style={{ backgroundColor: checkboxColor }} >
 
@@ -58,7 +63,7 @@ export const Task = ({
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 
 
