@@ -1,55 +1,54 @@
 import { useState } from "react"
-import { Task, TaskProps } from "./Task"
+import { Task, TaskDetails, TaskProps } from "./Task"
 
-export const taskArray: TaskProps[] = [
+export const initialTasks: TaskDetails[] = [
     {
         // why does this break when I add parentheses to whenChild? 
-        whenChildCheckboxClicked: whenChildCheckboxClicked,
+        id: 1,
         completeState: true,
         title: "Task 1",
         description: "this is the description of a very fun task"
     },
     {
-        whenChildCheckboxClicked: whenChildCheckboxClicked,
+        id: 2,
         completeState: false,
         title: "Task 2",
         description: "this is a not so fun task"
     }
-
 ]
 
 
 
-// map function that renders props in each task into a task component
-// which then gets rendered in tasklist (by the map function)
-
-function mapTaskPropsToTask({ whenChildCheckboxClicked: updateState, completeState, title, description }: TaskProps, index: number) {
-    return (
-        <Task whenChildCheckboxClicked={whenChildCheckboxClicked} completeState={completeState} title={title} description={description} />
-    )
-
-}
-
-export function whenChildCheckboxClicked() {
-
-    //updating the tasklist array and its child components
-    // the way that it does that, is by editing the state variable
-
-    console.log("hello")
-
-    // looks wrong, feels wrong!
-
-}
-
 
 export const TaskList = () => {
+    // QUESTION: what should the default here be? 
+    const [tasks, setTasks] = useState(initialTasks)
 
-    const [TaskList, whenChildCheckboxClicked] = useState([])
+    // TODO: every task needs to have an id
+    function toggleSelectedTask(id: number) {
+        const theTaskWeAreChangingIndex = tasks.findIndex((task) => { task.id === id })
+        if (theTaskWeAreChangingIndex < 0) return
+        const oldTask = tasks[theTaskWeAreChangingIndex]
+        const newTask = { ...oldTask, completeState: !oldTask.completeState }
+        tasks[theTaskWeAreChangingIndex] = newTask
+        setTasks(tasks)
+    }
+
+
+    // map function that renders props in each task into a task component
+    // which then gets rendered in tasklist (by the map function)
+
+    function mapTaskPropsToTask({ whenMyCheckboxClicked: updateState, completeState, title, description }: TaskProps, index: number) {
+        return (
+            <Task whenMyCheckboxClicked={toggleSelectedTask} completeState={completeState} title={title} description={description} />
+        )
+
+    }
 
 
     return (
         <div>
-            {taskArray.map(mapTaskPropsToTask)}
+            {tasks.map(mapTaskPropsToTask)}
         </div>
     )
 

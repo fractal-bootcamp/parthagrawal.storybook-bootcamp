@@ -5,22 +5,26 @@
 import { useState } from "react"
 import { whenChildCheckboxClicked } from "./TaskList"
 
-export type TaskProps = {
+
+export type TaskDetails = {
     completeState: boolean
     title: string
     description: string
-    whenChildCheckboxClicked: () => void
+    id: number
+}
+
+export type TaskProps = {
+    task: TaskDetails,
+    whenMyTaskIsClicked: () => void,
 }
 
 
 export const Task = ({
-    completeState,
-    title,
-    description,
-    whenChildCheckboxClicked
-
+    task,
+    whenMyTaskIsClicked,
 }: TaskProps) => {
 
+    const { completeState, title, description, id } = task;
     // const [stateComplete, clickChange] = useState(false);
 
     const taskColor = completeState ? "lightgreen" : "white"
@@ -47,7 +51,7 @@ export const Task = ({
 
                 {/* checkbox */}
                 <div
-                    onClick={() => whenChildCheckboxClicked()}
+                    onClick={() => whenMyCheckboxClicked()}
                     className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
                     style={{ backgroundColor: checkboxColor }} >
 
