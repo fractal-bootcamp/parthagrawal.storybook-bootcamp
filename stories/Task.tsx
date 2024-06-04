@@ -10,6 +10,16 @@ export type TaskProps = {
     checkboxColor: string
 
 }
+
+function clickChange(completeStatus: boolean) {
+    console.log(completeStatus)
+    completeStatus = !completeStatus
+    console.log(completeStatus)
+
+    return (
+        completeStatus
+    )
+}
 export const Task = ({
     completeStatus,
     title,
@@ -40,7 +50,10 @@ export const Task = ({
                 {/* two columns */}
 
                 {/* checkbox */}
-                <div className="border rounded-md border-solid w-[25px] h-[25px] font-sans" style={{ backgroundColor: checkboxColor }} >
+                <div
+                    onClick={() => (clickChange(completeStatus))}
+                    className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
+                    style={{ backgroundColor: checkboxColor }} >
 
                 </div>
                 {/* title and desc */}
