@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { Task } from './Task';
+import { Task, TaskProps } from './Task';
 import "app/tailwind.css"
 
 const meta: Meta<typeof Task> = {
@@ -10,10 +10,25 @@ const meta: Meta<typeof Task> = {
 export default meta;
 type Story = StoryObj<typeof Task>;
 
-export const Primary: Task = {
+const defaultTask: TaskProps = {
+    completeStatus: true,
+    description: "asdfasdf df sadf asddf dsf adsf dsfads dsf ",
+    title: "I'm a task",
+    taskColor: "#E2FFE5",
+    checkboxColor: "green"
+}
+
+export const Complete: Story = {
     args: {
-        primary: true,
-        label: 'Button',
+        // ... copies props from a previously defined set of props
+        ...defaultTask,
+    }
+}
+
+export const Incomplete: Story = {
+    args: {
+        ...defaultTask,
+        completeStatus: false,
     }
 }
 

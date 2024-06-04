@@ -1,13 +1,22 @@
 
-type Task = {
+// Task is a JSX component. Task needs
+// data, passed as props, of type TaskProps.
+
+export type TaskProps = {
     completeStatus: boolean
     title: string
     description: string
-    backgroundColor: string
+    taskColor: string
     checkboxColor: string
 
 }
-export const Task = () => {
+export const Task = ({
+    completeStatus,
+    title,
+    description,
+    taskColor,
+    checkboxColor
+}: TaskProps) => {
 
     return (
         // container
@@ -24,30 +33,23 @@ export const Task = () => {
             px-5 
             py-3
             w-[460px]
-            ">
+            "
+                style={{ backgroundColor: taskColor }}>
                 {/* two columns */}
 
-                <div className="border rounded-md border-solid w-[25px] h-[25px] font-sans ">
+                {/* checkbox */}
+                <div className="border rounded-md border-solid w-[25px] h-[25px] font-sans" style={{ backgroundColor: checkboxColor }} >
 
                 </div>
                 {/* title and desc */}
                 <div className="flex flex-col">
                     <h2 className="text-lg">
-                        Sweep the Kitchen
+                        {title}
                     </h2>
                     <p className="text-xs text-gray-400">
-                        Get under the cabinets, do a good job
+                        {description}
                     </p>
                 </div>
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
