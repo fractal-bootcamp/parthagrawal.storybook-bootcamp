@@ -14,16 +14,14 @@ const defaultTask: TaskProps = {
     completeStatus: true,
     description: "asdfasdf df sadf asddf dsf adsf dsfads dsf ",
     title: "I'm a task",
-    taskColor: "#E2FFE5",
-    checkboxColor: "green"
+
 }
 
 export const Complete: Story = {
     args: {
         // ... copies props from a previously defined set of props
         ...defaultTask,
-
-        completeStatus: false
+        completeStatus: true
     }
 }
 
@@ -31,8 +29,7 @@ export const Incomplete: Story = {
     args: {
         ...defaultTask,
         completeStatus: false,
-        taskColor: "white",
-        checkboxColor: "white"
+
     }
 }
 

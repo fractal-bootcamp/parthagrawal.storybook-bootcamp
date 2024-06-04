@@ -6,8 +6,6 @@ export type TaskProps = {
     completeStatus: boolean
     title: string
     description: string
-    taskColor: string
-    checkboxColor: string
 
 }
 export const Task = ({
