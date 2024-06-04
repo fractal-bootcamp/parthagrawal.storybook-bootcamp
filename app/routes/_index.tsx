@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Task } from "stories/Task";
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,6 +36,8 @@ export default function Index() {
             Remix Docs
           </a>
         </li>
+
+//        <Task completeStatus={true} title={"BananaTask"} 
       </ul>
     </div>
   );
