@@ -11,10 +11,15 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    // 'storybook-addon-remix-react-router'
   ],
   framework: {
     name: "@storybook/react-vite",
-    options: {},
+    options: {
+      builder: {
+        viteConfigPath: 'sb-vite.config.ts',
+      },
+    },
   },
 };
 export default config;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './button.css';
+import "../app/tailwind.css";
 
 interface ButtonProps {
   /**
@@ -38,11 +39,12 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, "italic", mode].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
       {label}
+      <div className='bg-black'>{label}</div>
     </button>
   );
 };
