@@ -2,23 +2,24 @@
 // Task is a JSX component. Task needs
 // data, passed as props, of type TaskProps.
 
+import { useState } from "react"
+
 export type TaskProps = {
-    completeStatus: boolean
     title: string
     description: string
-    taskColor: string
-    checkboxColor: string
-
 }
+
+
 export const Task = ({
-    completeStatus,
     title,
     description,
 
 }: TaskProps) => {
 
-    const taskColor = completeStatus ? "lightgreen" : "white"
-    const checkboxColor = completeStatus ? "green" : "white"
+    const [stateComplete, clickChange] = useState(false);
+
+    const taskColor = stateComplete ? "lightgreen" : "white"
+    const checkboxColor = stateComplete ? "green" : "white"
 
     return (
         // container
@@ -40,7 +41,10 @@ export const Task = ({
                 {/* two columns */}
 
                 {/* checkbox */}
-                <div className="border rounded-md border-solid w-[25px] h-[25px] font-sans" style={{ backgroundColor: checkboxColor }} >
+                <div
+                    onClick={() => (clickChange(!stateComplete))}
+                    className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
+                    style={{ backgroundColor: checkboxColor }} >
 
                 </div>
                 {/* title and desc */}
