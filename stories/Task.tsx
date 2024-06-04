@@ -5,23 +5,18 @@
 import { useState } from "react"
 
 export type TaskProps = {
-    completeStatus: boolean
     title: string
     description: string
-    taskColor: string
-    checkboxColor: string
-
 }
 
 
 export const Task = ({
-    completeStatus,
     title,
     description,
 
 }: TaskProps) => {
 
-    const [stateComplete, clickChange] = useState(completeStatus);
+    const [stateComplete, clickChange] = useState(false);
 
     const taskColor = stateComplete ? "lightgreen" : "white"
     const checkboxColor = stateComplete ? "green" : "white"
