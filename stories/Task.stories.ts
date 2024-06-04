@@ -22,6 +22,8 @@ export const Complete: Story = {
     args: {
         // ... copies props from a previously defined set of props
         ...defaultTask,
+
+        completeStatus: false
     }
 }
 
@@ -29,6 +31,8 @@ export const Incomplete: Story = {
     args: {
         ...defaultTask,
         completeStatus: false,
+        taskColor: "white",
+        checkboxColor: "white"
     }
 }
 
