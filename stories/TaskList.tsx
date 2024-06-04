@@ -1,34 +1,35 @@
-import { TaskProps } from "./Task"
+import { Task, TaskProps } from "./Task"
 
+export const TaskArray: TaskProps[] = [
 
-export interface TaskListProps {
-    tasks: TaskProps[]
+    {
+        title: "Task 1",
+        description: "this is the description of a very fun task"
+    },
+
+    {
+        title: "Task 2",
+        description: "this is a not so fun task"
+    }
+
+]
+
+// map function that renders props in each task into a task component
+// which then gets rendered in tasklist (by the map function)
+
+function mapTaskPropsToTask({ title, description }: TaskProps, index: number) {
+    return (
+        <Task title={title} description={description} />
+    )
 
 }
-
-export const TaskArray: TaskListProps = {
-    tasks: [
-        {
-            title: "Task 1",
-            description: "this is the description of a very fun task"
-        },
-
-        {
-            title: "Task 2",
-            description: "this is a not so fun task"
-        }
-    ]
-
-
-}
-
 
 
 export const TaskList = () => {
 
     return (
         <div>
-            hi
+            {TaskArray.map(mapTaskPropsToTask)}
         </div>
     )
 
