@@ -1,3 +1,27 @@
+import { TaskProps } from "./Task"
+
+
+export interface TaskListProps {
+    tasks: TaskProps[]
+
+}
+
+export const TaskArray: TaskListProps = {
+    tasks: [
+        {
+            title: "Task 1",
+            description: "this is the description of a very fun task"
+        },
+
+        {
+            title: "Task 2",
+            description: "this is a not so fun task"
+        }
+    ]
+
+
+}
+
 
 
 export const TaskList = () => {
