@@ -3,7 +3,6 @@
 // data, passed as props, of type TaskProps.
 
 import { useState } from "react"
-import { whenChildCheckboxClicked } from "./TaskList"
 
 
 export type TaskDetails = {
@@ -15,13 +14,13 @@ export type TaskDetails = {
 
 export type TaskProps = {
     task: TaskDetails,
-    whenMyTaskIsClicked: () => void,
+    toggleThisTask: () => void,
 }
 
 
 export const Task = ({
     task,
-    whenMyTaskIsClicked,
+    toggleThisTask,
 }: TaskProps) => {
 
     const { completeState, title, description, id } = task;
@@ -51,7 +50,7 @@ export const Task = ({
 
                 {/* checkbox */}
                 <div
-                    onClick={() => whenMyCheckboxClicked()}
+                    onClick={() => toggleThisTask()}
                     className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
                     style={{ backgroundColor: checkboxColor }} >
 

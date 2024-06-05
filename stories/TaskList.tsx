@@ -24,23 +24,37 @@ export const TaskList = () => {
     // QUESTION: what should the default here be? 
     const [tasks, setTasks] = useState(initialTasks)
 
-    // TODO: every task needs to have an id
-    function toggleSelectedTask(id: number) {
-        const theTaskWeAreChangingIndex = tasks.findIndex((task) => { task.id === id })
-        if (theTaskWeAreChangingIndex < 0) return
-        const oldTask = tasks[theTaskWeAreChangingIndex]
-        const newTask = { ...oldTask, completeState: !oldTask.completeState }
-        tasks[theTaskWeAreChangingIndex] = newTask
-        setTasks(tasks)
-    }
+
 
 
     // map function that renders props in each task into a task component
     // which then gets rendered in tasklist (by the map function)
 
-    function mapTaskPropsToTask({ whenMyCheckboxClicked: updateState, completeState, title, description }: TaskProps, index: number) {
+    function mapTaskPropsToTask(props: TaskProps, index: number) {
+        // TODO: every task needs to have an id
+        function updateTask(idxx: number) {
+            const oldTasks = tasks
+            const oldTask = oldTasks[idxx]
+            const newTask: TaskDetails = {
+                ...oldTask, completeState: !oldTask.completeState
+            };
+
+            function createNewTasksArray(task: TaskDetails, taskIndex: number) {
+                if (idxx === taskIndex) {
+                    return newTask;
+                }
+                else {
+                    return oldTask;
+                }
+            }
+            // returns an array
+            const newTasks = oldTasks.map(createNewTasksArray)
+            setTasks(newTasks)
+
+        }
+
         return (
-            <Task whenMyCheckboxClicked={toggleSelectedTask} completeState={completeState} title={title} description={description} />
+            <Task {...props} toggleThisTask={() => { updateTask(index) }} />
         )
 
     }
