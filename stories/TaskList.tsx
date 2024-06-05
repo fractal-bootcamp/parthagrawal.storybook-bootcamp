@@ -12,6 +12,16 @@ export const initialTasks: TaskDetails[] = [
         completeState: false,
         title: "Task 2",
         description: "this is a not so fun task"
+    },
+    {
+        completeState: false,
+        title: "Task 3",
+        description: "this is a not so fun task"
+    },
+    {
+        completeState: false,
+        title: "Task 4",
+        description: "this is a not so fun task"
     }
 ]
 
@@ -49,6 +59,22 @@ export const TaskList = () => {
             }
             // returns an array
             const newTasks = oldTasks.map(createNewTasksArray)
+
+            function compareElems(a: TaskDetails, b: TaskDetails) {
+                if (a.completeState && !b.completeState) {
+                    return -1;
+                }
+                if (!a.completeState && b.completeState) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
+
+
+            }
+
+            newTasks.sort(compareElems);
             setTasks(newTasks)
 
         }
