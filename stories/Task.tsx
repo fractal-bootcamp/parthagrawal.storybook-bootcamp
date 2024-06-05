@@ -1,77 +1,39 @@
-
-// Task is a JSX component. Task needs
-// data, passed as props, of type TaskProps.
-
-import { useState } from "react"
-import { whenChildCheckboxClicked } from "./TaskList"
+import React from 'react';
+import './Task.css';
 
 export type TaskProps = {
-    completeState: boolean
+    completeStatus: boolean
     title: string
     description: string
-    whenChildCheckboxClicked: () => void
 }
+
 
 
 export const Task = ({
-    completeState,
+    completeStatus,
     title,
     description,
-    whenChildCheckboxClicked
 
-}: TaskProps) => {
+}: TaskProps)=> {
+const mode = completeStatus ? 'Task checkbox-complete Task-complete'  : 'Task-incomplete Task checkbox-incomplete';
 
-    // const [stateComplete, clickChange] = useState(false);
-
-    const taskColor = completeState ? "lightgreen" : "white"
-    const checkboxColor = completeState ? "green" : "white"
 
     return (
-        // container
-        <div className="justify-center">
-            {/* outer container */}
-            <div className="
-            flex 
-            flex-row 
-            rounded-md
-            border 
-            border-solid 
-            gap-4 
-            items-center 
-            px-5 
-            py-3
-            w-[460px]
-            "
-                style={{ backgroundColor: taskColor }}>
-                {/* two columns */}
-
-                {/* checkbox */}
-                <div
-                    onClick={() => whenChildCheckboxClicked()}
-                    className="border rounded-md border-solid w-[25px] h-[25px] font-sans"
-                    style={{ backgroundColor: checkboxColor }} >
-
+      <>
+        <div className={mode}>
+            <div>
+                <div className= {mode}></div>
+                    <h2 className='text-main'>{title}</h2>
+                    <h3 className='text-secondary'>{description}</h3>
                 </div>
-                {/* title and desc */}
-                <div className="flex flex-col">
-                    <h2 className="text-lg">
-                        {title}
-                    </h2>
-                    <p className="text-xs text-gray-400">
-                        {description}
-                    </p>
-                </div>
-
             </div>
-        </div >
-    )
+      </>
+  
+  )
+  }
+
+
+  
 
 
 
-
-}
-
-// Looks like the props for this task are going to be 
-// background color
-// checkbox color
-// task status

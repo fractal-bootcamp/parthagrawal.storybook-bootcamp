@@ -1,0 +1,88 @@
+
+.Task-incomplete {
+    width: 462px;
+    height: 77px;
+    top: -119px;
+    left: -4866px;
+    gap: 0px;
+    border-radius: 8px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(216, 216, 216, 1)
+}
+
+.Task-complete {
+    width: 462px;
+    height: 77px;
+    top: -119px;
+    left: -4866px;
+    gap: 0px;
+    border-radius: 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(226, 255, 229, 1);
+    border: 1px solid rgba(216, 216, 216, 1)
+}
+
+.Task .text-main {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
+    text-align: left;
+    width: 365px;
+    height: 27px;
+    top: -108px;
+    left: -4810px;
+    gap: 0px;
+    opacity: 0px;
+
+}
+
+.Task .text-secondary {
+    font-family: "Inter", sans-serif;
+    width: 365px;
+    height: 27px;
+    top: -81px;
+    left: -4810px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: left;
+    background: rgba(125, 125, 125, 1);
+
+}
+
+.Task .checkbox-incomplete {
+
+    width: 25px;
+    height: 25px;
+    top: -93px;
+    left: -4848px;
+    gap: 0px;
+    border-radius: 8px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(216, 216, 216, 1)
+
+}
+
+.Task .checkbox-complete {
+
+    width: 25px;
+    height: 25px;
+    top: -93px;
+    left: -4848px;
+    gap: 0px;
+    border-radius: 8px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(53, 152, 69, 1);
+    border: 1px solid rgba(216, 216, 216, 1)
+
+}
