@@ -30,7 +30,7 @@ export const TaskList = () => {
     // map function that renders props in each task into a task component
     // which then gets rendered in tasklist (by the map function)
 
-    function mapTaskPropsToTask(props: TaskProps, index: number) {
+    function mapTaskPropsToTask(task: TaskDetails, index: number) {
         // TODO: every task needs to have an id
         function updateTask(idxx: number) {
             const oldTasks = tasks
@@ -54,7 +54,7 @@ export const TaskList = () => {
         }
 
         return (
-            <Task {...props} toggleThisTask={() => { updateTask(index) }} />
+            <Task task={task} toggleThisTask={() => { updateTask(index) }} />
         )
 
     }
