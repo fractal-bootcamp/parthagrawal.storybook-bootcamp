@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Task, TaskDetails, TaskProps } from "./Task"
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 
 export const initialTasks: TaskDetails[] = [
     {
@@ -31,6 +33,7 @@ export const initialTasks: TaskDetails[] = [
 export const TaskList = () => {
     // QUESTION: what should the default here be? 
     const [tasks, setTasks] = useState(initialTasks)
+    const [parent, enableAnimations] = useAutoAnimate()
 
 
 
@@ -80,14 +83,14 @@ export const TaskList = () => {
         }
 
         return (
-            <Task task={task} toggleThisTask={() => { updateTask(index) }} />
+            <Task key={index} task={task} toggleThisTask={() => { updateTask(index) }} />
         )
 
     }
 
 
     return (
-        <div>
+        <div ref={parent}>
             {tasks.map(mapTaskPropsToTask)}
         </div>
     )
