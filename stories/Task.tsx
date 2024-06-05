@@ -9,7 +9,6 @@ export type TaskDetails = {
     completeState: boolean
     title: string
     description: string
-    id: number
 }
 
 export type TaskProps = {
@@ -23,7 +22,7 @@ export const Task = ({
     toggleThisTask,
 }: TaskProps) => {
 
-    const { completeState, title, description, id } = task;
+    const { completeState, title, description } = task;
     // const [stateComplete, clickChange] = useState(false);
 
     const taskColor = completeState ? "lightgreen" : "white"

@@ -4,13 +4,11 @@ import { Task, TaskDetails, TaskProps } from "./Task"
 export const initialTasks: TaskDetails[] = [
     {
         // why does this break when I add parentheses to whenChild? 
-        id: 1,
         completeState: true,
         title: "Task 1",
         description: "this is the description of a very fun task"
     },
     {
-        id: 2,
         completeState: false,
         title: "Task 2",
         description: "this is a not so fun task"
@@ -34,17 +32,19 @@ export const TaskList = () => {
         // TODO: every task needs to have an id
         function updateTask(idxx: number) {
             const oldTasks = tasks
-            const oldTask = oldTasks[idxx]
-            const newTask: TaskDetails = {
-                ...oldTask, completeState: !oldTask.completeState
+            const unflippedTask = oldTasks[idxx]
+            const flippedTask: TaskDetails = {
+                ...unflippedTask, completeState: !unflippedTask.completeState
             };
+
 
             function createNewTasksArray(task: TaskDetails, taskIndex: number) {
                 if (idxx === taskIndex) {
-                    return newTask;
+
+                    return flippedTask;
                 }
                 else {
-                    return oldTask;
+                    return oldTasks[taskIndex];
                 }
             }
             // returns an array
